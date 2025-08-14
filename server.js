@@ -29,6 +29,16 @@ app.get('/person', (req,res) =>{
 app.get('/chef', (req,res) =>{
     res.send('welcome to the chicken chef haul');
 });
+app.get('/daal', (req,res) =>{
+    var specialdaal = {
+        name:'daal',
+        pulse:'masoor',
+        taste:'good',
+        health:'beneficial'
+
+    }
+    res.send(`welcome here is recipe ${specialdaal}`);
+});
 
 // person
 
