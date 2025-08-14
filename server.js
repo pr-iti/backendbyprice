@@ -10,27 +10,47 @@
 // });
 
 const express = require('express');
-const app = express();
+const app = express();// 
 const _ = require('lodash');
 const db = require('./db');
+const student = require('./Models/student')
+
 
 const port = 5500;
 
 // basic routes
-app.get('/', (req, res) => {
+app.get('/', function(req, res)  {
     res.send("response sent");
+});
+
+app.get('/person', (req,res) =>{
+    res.send('welcome to the chicken haul');
 });
 
 // person
 
-app.post('/student', (req,res) => {
+// app.post('/student', async(req,res) => {
       
-    var studentData = {
-        "name":"priti",
-        "age":21
-    };
-    
-});
+//     try{
+//         var studentData = {
+//         "name":"priti",
+//         "age":21,
+//         "course":"cse",
+//         "email": "priti@gmail.com"
+//      };
+//      const newstudent = new student(studentData);
+//      const response = await newstudent.save();
+//       console.log("data saved");
+//       res.status(200).json(response);
+
+
+//     }catch(err){
+//         console.log(err);
+//         res.status(500).json({err:'internal server js'});
+
+//     }
+  
+// });
 
 //start server
 
