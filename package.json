@@ -3,8 +3,7 @@
   "name": "my-express-app",
   
   "version": "1.0.0",
-  
-  "type": "commonjs",
+
   
   "main": "server.js",
   
@@ -28,11 +27,9 @@
   
     
   "mongoose": "^8.17.1",
-  
-    
+   
   "nodemon": "^3.1.10",
   
-    
   "prompt-sync": "^4.2.0"
   
   }

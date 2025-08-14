@@ -11,12 +11,12 @@
 
 const express = require('express');
 const app = express();// 
-const _ = require('lodash');
-const db = require('./db');
-const student = require('./Models/student')
+// const _ = require('lodash');
+// const db = require('./db');
+// const student = require('./Models/student')
 
 
-const port = 5500;
+// const port = 5500;
 
 // basic routes
 app.get('/', function(req, res)  {
@@ -24,7 +24,10 @@ app.get('/', function(req, res)  {
 });
 
 app.get('/person', (req,res) =>{
-    res.send('welcome to the chicken haul');
+    res.send('welcome to the employees haul');
+});
+app.get('/chef', (req,res) =>{
+    res.send('welcome to the chicken chef haul');
 });
 
 // person
@@ -54,8 +57,10 @@ app.get('/person', (req,res) =>{
 
 //start server
 
-app.listen(port,() => {
-    console.log(`app listening on ${port}`);
+// app.listen(port,() => {
+//     console.log(`app listening on ${port}`);
+// });
+app.listen(5500,()=>{
+    console.log("server is listening");
 });
-
 
