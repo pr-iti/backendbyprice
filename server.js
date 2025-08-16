@@ -13,8 +13,11 @@ const express = require('express');
 const app = express();// 
 // const _ = require('lodash');
 const db = require('./db');
+const Person = require('./Models/person')
 // const student = require('./Models/student')
 
+const bodyParser = require('body-parser');
+app.use(bodyParser.json());// req.body
 
 // const port = 5500;
 
@@ -23,10 +26,32 @@ app.get('/', function(req, res)  {
     res.send("response sent and welcome to hotels");
 });
 
+
 app.get('/person', (req,res) =>{
     res.send('welcome to the employees haul');
 });
 
+app.post('/person',(req,res) => {
+
+    const data = req.body
+    const newPerson = new Person(data);
+    // newPerson.name = data.name;
+    // newPerson.age = data.age;
+
+    //------- this call back with save is not in use.
+    newPerson.save((error, person) => {
+        if(error){
+            console.log("'Error in saving person:",error);
+            res.status(500).json({error:'internal server error'})
+        }else{
+            console.log('data saved successfully');
+            res.status(200).json(person);
+        }
+
+    })
+
+
+});
 app.get('/chef', (req,res) =>{
     res.send('welcome to the chicken chef haul');
 });

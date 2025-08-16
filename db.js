@@ -11,8 +11,8 @@ const mongoURL = 'mongodb://127.0.0.1:27017/hotels';
 const mongoose = require("mongoose");
 
 mongoose.connect("mongodb://127.0.0.1:27017/hotels")
-  .then(() => console.log("✅ MongoDB Connected"))
-  .catch((err) => console.error("❌ MongoDB Connection Error:", err));
+  .then(() => console.log(" MongoDB Connected"))
+  .catch((err) => console.error(" MongoDB Connection Error:", err));
 
 
 const db = mongoose.connection;
