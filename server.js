@@ -12,7 +12,7 @@
 const express = require('express');
 const app = express();// 
 // const _ = require('lodash');
-// const db = require('./db');
+const db = require('./db');
 // const student = require('./Models/student')
 
 
@@ -20,12 +20,13 @@ const app = express();//
 
 // basic routes
 app.get('/', function(req, res)  {
-    res.send("response sent");
+    res.send("response sent and welcome to hotels");
 });
 
 app.get('/person', (req,res) =>{
     res.send('welcome to the employees haul');
 });
+
 app.get('/chef', (req,res) =>{
     res.send('welcome to the chicken chef haul');
 });
@@ -36,9 +37,14 @@ app.get('/daal', (req,res) =>{
         taste:'good',
         health:'beneficial'
 
-    }
+    };
     res.send(`welcome here is recipe ${specialdaal}`);
 });
+
+app.post('/student',(req,res) =>{
+
+    res.send('response sent and data is saved');
+})
 
 // person
 
@@ -70,7 +76,7 @@ app.get('/daal', (req,res) =>{
 // app.listen(port,() => {
 //     console.log(`app listening on ${port}`);
 // });
-app.listen(5500,()=>{
+app.listen(3000,()=>{
     console.log("server is listening");
 });
 
