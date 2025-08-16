@@ -11,13 +11,16 @@
 
 const express = require('express');
 const app = express();// 
+//app.use(express.json());
+
 // const _ = require('lodash');
 const db = require('./db');
-const Person = require('./Models/person')
+const Person = require('./Models/person');
+const menuItems = require('./Models/menu');
 // const student = require('./Models/student')
 
 const bodyParser = require('body-parser');
-app.use(bodyParser.json());// req.body
+app.use(express.json());// req.body
 
 // const port = 5500;
 
@@ -27,31 +30,42 @@ app.get('/', function(req, res)  {
 });
 
 
-app.get('/person', (req,res) =>{
-    res.send('welcome to the employees haul');
-});
+//=-=-=-=-=-=--=-=-=-=-=-=-=--=-==--=-=-=-=-=-=-=-=-=-=-=-=-=-==-
 
-app.post('/person',(req,res) => {
-
-    const data = req.body
+app.post('/person',async(req,res) => {
+    try{
+     const data = req.body
     const newPerson = new Person(data);
     // newPerson.name = data.name;
     // newPerson.age = data.age;
 
     //------- this call back with save is not in use.
-    newPerson.save((error, person) => {
-        if(error){
-            console.log("'Error in saving person:",error);
-            res.status(500).json({error:'internal server error'})
-        }else{
-            console.log('data saved successfully');
-            res.status(200).json(person);
-        }
+    const response = await newPerson.save();
+    console.log('data saved');
+    res.status(200).json(response);
 
-    })
+    }catch(err){
+        console.log('error in saving data',err);
+       res.status(500).json({error:'Internal Server Error'});
+
+    }
 
 
+app.get('/person', async(req,res) =>{
+   try{
+    const data = await Person.find();
+
+    console.log('data fetched');
+    res.status(200).json(data);
+
+   }catch(err){
+    console.log(err);
+    res.status(500).json({error:'Internal Server Error'});
+
+
+   }
 });
+//+++++++++++++++++++++++++++++++++++++++++++++++++++
 app.get('/chef', (req,res) =>{
     res.send('welcome to the chicken chef haul');
 });
@@ -66,6 +80,46 @@ app.get('/daal', (req,res) =>{
     res.send(`welcome here is recipe ${specialdaal}`);
 });
 
+
+//=========================menu===========
+
+
+    app.post('/menu',async(req,res) => {
+    try{
+     const data = req.body
+    const newmenu = new menuItems(data);
+    // newPerson.name = data.name;
+    // newPerson.age = data.age;
+
+    //------- this call back with save is not in use.
+    const response = await newmenu.save();
+    console.log('data saved');
+    res.status(200).json(response);
+
+    }catch(err){
+        console.log('error in saving data',err);
+       res.status(500).json({error:'Internal Server Error'});
+
+    }  
+    // newPerson.name = data.name;
+    // newPerson.age = data.age;
+
+    //------- this call back with save is not in use.
+
+});
+
+app.get('/menu',async(req,res)=> {
+
+    try{
+        console.log("data fetched",);
+        res.status(200).json(menu);
+    }catch(err){
+        console.log("erro occured",err);
+        res.status(200).json({err:'internal server error'});
+    }
+    
+})
+///---------------------------------------------------------////
 app.post('/student',(req,res) =>{
 
     res.send('response sent and data is saved');
