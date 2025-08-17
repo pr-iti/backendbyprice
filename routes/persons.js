@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
 //--------------
-const Person = require('../Models/person');
+const Person = require('./../Models/person');
+const { findByIdAndUpdate } = require('../Models/menu');
 
 // post routes to add person
 router.post('/',async(req,res) => {
@@ -57,5 +58,51 @@ router.get('/:workType',async(req,res) =>{
         res.status(500).json({error:'Internal server error'});
 
     }
-})
+});
+router.put('/:id',async(req,res) =>{
+
+    try{
+        const person_id = req.params.id;
+        const data= req.body;
+
+        const updateddata  = await Person.findByIdAndUpdate(person_id,data,{
+            new:true,// return the updated document
+            runValidators:true, // run mongoose validation
+        });
+        
+        if(!updateddata){
+            console.log("error in updation or invalid id");
+            res.status(404).json({err:'not found'});
+        }else{
+             console.log("succefully updated");
+             res.status(200).json(updateddata);
+        }
+       
+    }catch(err){
+         console.log(err);
+        res.status(500).json({error:'Internal server error'});
+
+    }
+});
+
+router.delete('/:id', async (req, res) => {
+  try {
+    const person_id = req.params.id; // extract ID
+    const response = await Person.findByIdAndDelete(person_id);
+
+    if (!response) {
+      return res.status(404).json({ error: 'Person not found' });
+    }
+
+    console.log("Successfully deleted record:", response);
+    res.status(200).json({ message: 'Person deleted successfully', deleted: response });
+
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+
+
 module.exports = router;

@@ -1,27 +1,22 @@
-// const fs = require("fs");
-
-// fs.appendFile('/backendprince/greetings.txt','hii welcome to the new chapter of life',() => {
-//     console.log("file is created");
-// });
-
-// fs.copyFile('/backendprince/greetings.txt','/backendprince/extra/check.txt', () => {
-//     console.log("copied successfully");
-
-// });
 
 const express = require('express');
-const app = express();// 
-const personRoutes = require('./routes/personRoutes');
-app.use('/person', personRoutes);
-
+const app = express();
 
 const db = require('./db');
 const Person = require('./Models/person');
 const menuItems = require('./Models/menu');
-// const student = require('./Models/student')
+const personRoutes = require('./routes/persons');
+const menuItemsRoutes = require('./routes/menus');
 
 const bodyParser = require('body-parser');
+// const menus = require('./Models/menu');
 app.use(express.json());// req.body
+app.use('/person', personRoutes);
+app.use('/menuItems', menuItemsRoutes);
+
+// const student = require('./Models/student')
+
+
 
 
 // basic routes
