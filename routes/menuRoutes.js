@@ -3,10 +3,10 @@ const router = express.Router();
 
 //post routers of menu
 
-    app.post('/menu',async(req,res) => {
+router.post('/menu',async(req,res) => {
     try{
      const data = req.body()
-    const  newmenu= new menuItems(data);
+     const  newmenu= new menuItems(data);
     // newPerson.name = data.name;
     // newPerson.age = data.age;
 
@@ -29,7 +29,7 @@ const router = express.Router();
 
 
 // ger routers to menu
-app.get('/menu',async(req,res)=> {
+router.get('/menu',async(req,res)=> {
 
     try{
         const item = await menuItems.find();
@@ -41,5 +41,6 @@ app.get('/menu',async(req,res)=> {
         res.status(500).json({err:'internal server error'});
     }
     
-})
+});
 
+module.exports = router;

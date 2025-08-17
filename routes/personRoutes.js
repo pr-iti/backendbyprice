@@ -1,8 +1,10 @@
 const express = require('express');
 const router = express.Router();
+//--------------
+const Person = require('../Models/person');
 
 // post routes to add person
-app.post('/person',async(req,res) => {
+router.post('/',async(req,res) => {
     try{
      const data = req.body
     const newPerson = new Person(data);
@@ -22,7 +24,7 @@ app.post('/person',async(req,res) => {
 });
 
 // get routes to get  person
-app.get('/person', async(req,res) =>{
+router.get('/', async(req,res) =>{
    try{
     const data = await Person.find();
 
@@ -37,7 +39,7 @@ app.get('/person', async(req,res) =>{
    }
 });
 //---------------------------------------
-app.get('/person/:workType',async(req,res) =>{
+router.get('/:workType',async(req,res) =>{
     try{
         const workType = req.params.workType;
         if(workType == 'chef' || workType =='manager' || workType =='waiter'){
@@ -56,3 +58,4 @@ app.get('/person/:workType',async(req,res) =>{
 
     }
 })
+module.exports = router;
