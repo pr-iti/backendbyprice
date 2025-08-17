@@ -1,3 +1,77 @@
 #ignore node_modules
 
 node_modules
+.env
+#data to be used for schemas
+{
+        "_id": "68a1c65959440faaf0c0eaf3",
+        "name": "Mango Lassi",
+    "price": 90,
+    "taste": "sweet",
+    "is_drink": true,
+    "ingredients": [
+        "Mango",
+        "Yogurt",
+        "Sugar"
+    ],
+    "num_sales": 150,
+        "__v": 0
+    },
+    {
+        "_id": "68a1c6b859440faaf0c0eaf5",
+        "name": "Mango Lassi",
+        "price": 90,
+        "taste": "sweet",
+        "is_drink": true,
+        "ingredients": [
+            "Mango",
+            "Yogurt",
+            "Sugar"
+        ],
+        "num_sales": 150,
+        "__v": 0
+    },
+    {
+        "_id": "68a1c6cc59440faaf0c0eaf7",
+        "name": "Masala Dosa",
+        "price": 120,
+        "taste": "spicy",
+        "is_drink": false,
+        "ingredients": [
+            "Rice Batter",
+            "Potato",
+            "Onion",
+            "Spices"
+        ],
+        "num_sales": 200,
+        "__v": 0
+    },
+    {
+        "_id": "68a1c6dd59440faaf0c0eaf9",
+        "name": "Gulab Jamun",
+        "price": 80,
+        "taste": "sweet",
+        "is_drink": false,
+        "ingredients": [
+            "Milk Solids",
+            "Sugar Syrup",
+            "Cardamom"
+        ],
+        "num_sales": 300,
+        "__v": 0
+    },
+    {
+        "_id": "68a1c6f259440faaf0c0eafb",
+        "name": "Lemonade",
+        "price": 50,
+        "taste": "sour",
+        "is_drink": true,
+        "ingredients": [
+            "Lemon",
+            "Water",
+            "Sugar",
+            "Salt"
+        ],
+        "num_sales": 500,
+        "__v": 0
+    }
