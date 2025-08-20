@@ -29,7 +29,7 @@ router.get('/', async(req,res) =>{
    try{
     const data = await Person.find();
 
-    console.log('data fetched');
+    console.log('data fetched',data);
     res.status(200).json(data);
 
    }catch(err){

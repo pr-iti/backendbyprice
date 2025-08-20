@@ -19,6 +19,9 @@
   "dependencies": {
   
     
+  "bcrypt": "^6.0.0",
+  
+    
   "body-parser": "^2.2.0",
   
     
@@ -35,6 +38,12 @@
   
     
   "nodemon": "^3.1.10",
+  
+    
+  "passport": "^0.7.0",
+  
+    
+  "passport-local": "^1.0.0",
   
     
   "prompt-sync": "^4.2.0"

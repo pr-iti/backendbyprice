@@ -2,7 +2,15 @@
 const express = require('express');
 const app = express();
 
-const PORT =process.env.PORT || 3000;
+
+// Middleware function
+const logRequest = (req,res,next )=>{
+    console.log(`[${new Date().toLocaleString()}] Request Made to : ${req.originalUrl}`);
+    next();// move to next  phase
+}
+app.use(logRequest);
+const port = process.env.PORT || 3000;
+
 const db = require('./db');
 require('dotenv').config();
 const Person = require('./Models/person');
@@ -10,16 +18,21 @@ const menuItems = require('./Models/menu');
 const personRoutes = require('./routes/persons');
 const menuItemsRoutes = require('./routes/menus');
 
-const bodyParser = require('body-parser');
+// const bodyParser = require('body-parser');
 // const menus = require('./Models/menu');
 app.use(express.json());// req.body
 app.use('/person', personRoutes);
 app.use('/menuItems', menuItemsRoutes);
+//--------------------------------------------------------
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
+
 
 // const student = require('./Models/student')
 
-
-
+// use middleware for logging time
+// 
+// app.use(logRequest);
 
 // basic routes
 app.get('/', function(req, res)  {
@@ -28,7 +41,9 @@ app.get('/', function(req, res)  {
 
 
 
-app.listen(PORT,()=>{
-    console.log("server is listening");
+//const port = process.env.PORT || 3000;
+
+app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
 });
 
