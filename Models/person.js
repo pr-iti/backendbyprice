@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 //define person schema
 
-const personaSchema = new mongoose.Schema({
+const personSchema = new mongoose.Schema({
     name:{
         type:String,
         required:true
@@ -25,10 +25,18 @@ const personaSchema = new mongoose.Schema({
     },
     salary:{
         type:Number
+    },
+    username:{
+        type:String,
+        required:true
+    },
+    password:{
+        type:String,
+        required:true
     }
 
 });
 
 // creating person model;
-const person = mongoose.model('Person',personaSchema);
+const person = mongoose.model('Person',personSchema);
 module.exports = person;
